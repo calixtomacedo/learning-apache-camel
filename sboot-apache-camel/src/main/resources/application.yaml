@@ -1,0 +1,4 @@
+spring:
+  application:
+  name: sboot-apache-camel
+
