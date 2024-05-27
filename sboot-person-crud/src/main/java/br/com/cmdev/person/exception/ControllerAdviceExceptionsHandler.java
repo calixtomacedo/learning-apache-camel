@@ -23,7 +23,7 @@ public class ControllerAdviceExceptionsHandler {
         builderMessage.append(" occurred in the class: ".concat(classError.get().getClassName()));
         builderMessage.append(" Method: ".concat(classError.get().getMethodName()));
         builderMessage.append(" Number line: ".concat(String.valueOf(classError.get().getLineNumber())));
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ResponseErrorMessage(HttpStatus.INTERNAL_SERVER_ERROR,  exception.getMessage(), builderMessage.toString()));
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ResponseErrorMessage(HttpStatus.INTERNAL_SERVER_ERROR,  exception.getMessage(), builderMessage.toString(), exception.getCause().getMessage()));
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
