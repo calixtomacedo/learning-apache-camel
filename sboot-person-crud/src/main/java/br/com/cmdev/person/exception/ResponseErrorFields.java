@@ -1,4 +1,4 @@
-package br.com.cmdev.person.exceptions;
+package br.com.cmdev.person.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

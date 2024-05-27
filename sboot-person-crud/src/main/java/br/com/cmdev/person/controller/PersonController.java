@@ -1,8 +1,7 @@
-package br.com.cmdev.person.controllers;
+package br.com.cmdev.person.controller;
 
-import br.com.cmdev.person.domain.Person;
-import br.com.cmdev.person.domain.PersonDTO;
-import br.com.cmdev.person.services.PersonService;
+import br.com.cmdev.person.domain.PersonRequest;
+import br.com.cmdev.person.service.PersonService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,14 +18,18 @@ public class PersonController {
     }
 
     @PostMapping
-    public ResponseEntity save(@Valid @RequestBody PersonDTO person) {
-        this.service.addPerson(new Person(service.getPersonLastId() +1, person.name(), person.email(), person.birthDate(), person.age()));
+    public ResponseEntity save(@Valid @RequestBody PersonRequest request) {
+        this.service.save(request);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @GetMapping
     public ResponseEntity getAllPerson() {
-        return ResponseEntity.ok(this.service.getAllPerson());
+        var response = this.service.getAllPerson();
+        if (response != null && !response.isEmpty()){
+            return ResponseEntity.ok(response);
+        }
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
 }
