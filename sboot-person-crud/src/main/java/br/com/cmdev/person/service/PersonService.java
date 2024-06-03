@@ -1,9 +1,9 @@
 package br.com.cmdev.person.service;
 
 import br.com.cmdev.person.domain.Person;
-import br.com.cmdev.person.domain.PersonRequest;
-import br.com.cmdev.person.domain.PersonMapper;
-import br.com.cmdev.person.domain.PersonResponse;
+import br.com.cmdev.person.domain.dto.PersonRequest;
+import br.com.cmdev.person.domain.mapper.PersonMapper;
+import br.com.cmdev.person.domain.dto.PersonResponse;
 import br.com.cmdev.person.repository.PersonRepository;
 import org.springframework.stereotype.Service;
 
@@ -50,7 +50,7 @@ public class PersonService {
             person.get().setEmail(request.email());
             person.get().setBirthDate(request.birthDate());
             person.get().setAge(request.age());
-            person.get().setIsActive(request.isActive());
+            person.get().setIsActive(request.isActive() !=  null ? request.isActive() : person.get().getIsActive());
             person.get().setChangeDate(LocalDateTime.now());
             this.repository.save(person.get());
         }

@@ -1,4 +1,4 @@
-package br.com.cmdev.person.domain;
+package br.com.cmdev.person.domain.dto;
 
 public record PersonResponse(
         Long idPerson,

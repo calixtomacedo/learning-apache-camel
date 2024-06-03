@@ -1,4 +1,8 @@
-package br.com.cmdev.person.domain;
+package br.com.cmdev.person.domain.mapper;
+
+import br.com.cmdev.person.domain.Person;
+import br.com.cmdev.person.domain.dto.PersonRequest;
+import br.com.cmdev.person.domain.dto.PersonResponse;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
