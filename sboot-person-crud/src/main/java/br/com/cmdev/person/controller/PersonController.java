@@ -3,7 +3,6 @@ package br.com.cmdev.person.controller;
 import br.com.cmdev.person.domain.PersonRequest;
 import br.com.cmdev.person.service.PersonService;
 import jakarta.validation.Valid;
-import jakarta.websocket.server.PathParam;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,8 +24,8 @@ public class PersonController {
     }
 
     @GetMapping
-    public ResponseEntity getAllPerson() {
-        var response = this.service.getAllPerson();
+    public ResponseEntity findAll() {
+        var response = this.service.findAll();
         if (response != null && !response.isEmpty()){
             return ResponseEntity.ok(response);
         }
@@ -35,7 +34,7 @@ public class PersonController {
 
     @GetMapping("/{id}")
     public ResponseEntity getPersonById(@PathVariable("id") Long id) {
-        var response = this.service.getPersonById(id);
+        var response = this.service.findById(id);
         if (response != null){
             return ResponseEntity.ok(response);
         }
@@ -45,7 +44,7 @@ public class PersonController {
     @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable("id") Long id) {
         this.service.delete(id);
-        return this.getAllPerson();
+        return this.findAll();
     }
 
     @PutMapping

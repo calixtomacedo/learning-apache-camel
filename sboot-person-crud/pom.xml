@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>br.com.cmdev</groupId>
 	<artifactId>sboot-person-crud</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>sboot-person-crud</name>
 	<description>CRUD person using Spring Boot</description>
 	<properties>

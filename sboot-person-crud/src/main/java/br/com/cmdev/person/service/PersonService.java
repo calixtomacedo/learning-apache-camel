@@ -25,12 +25,12 @@ public class PersonService {
     }
 
 
-    public List<PersonResponse> getAllPerson() {
+    public List<PersonResponse> findAll() {
         List<Person> personList = this.repository.findAll();
         return PersonMapper.toPersonResponseList(personList);
     }
 
-    public PersonResponse getPersonById(Long id) {
+    public PersonResponse findById(Long id) {
         Optional<Person> person = this.repository.findById(id);
         PersonResponse personResponse = PersonMapper.toPersonResponse(person);
         return personResponse;
