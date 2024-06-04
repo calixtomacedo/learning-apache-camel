@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>br.com.cmdev</groupId>
 	<artifactId>sboot-address-crud</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>sboot-address-crud</name>
 	<description>CRUD address using Spring Boot</description>
 	<properties>
