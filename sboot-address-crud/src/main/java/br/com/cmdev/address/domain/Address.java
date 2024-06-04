@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDateTime;
@@ -12,10 +13,11 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "tb_adresses")
+@Table(name = "tb_addresses")
 public class Address {
 
-    private Long idAdresses;
+    @Id
+    private Long idAddress;
     private Long idPerson;
     private String street;
     private String number;
@@ -27,17 +29,17 @@ public class Address {
     private LocalDateTime creationDate;
     private LocalDateTime changeDate;
 
-    public Address(Long idPerson, String street, String number, String neighborhood, String city, State state, String zipcode) {
+    public Address(Long idPerson, String street, String number, String neighborhood, String city, String state, String zipcode) {
         this.idPerson = idPerson;
         this.street = street;
         this.number = number;
         this.neighborhood = neighborhood;
         this.city = city;
-        this.state = state;
+        this.state = State.valueOf(state);
         this.zipcode = zipcode;
         this.isActive = isActive == null ? Boolean.TRUE : isActive;
         this.creationDate = LocalDateTime.now();
-        this.changeDate = this.idPerson != null ? LocalDateTime.now() : null;
+        this.changeDate = this.idAddress != null ? LocalDateTime.now() : null;
     }
 
 }

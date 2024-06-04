@@ -13,20 +13,19 @@ import java.util.Optional;
 public class AddressMapper {
     public static Address toAddress(AddressRequest request) {
         return new Address(request.idPerson(), request.street(), request.number(), request.neighborhood(), request.city(), request.state(), request.zipcode());
-
     }
 
     public static List<AddressResponse> toAddressResponseList(List<Address> addresses) {
         List<AddressResponse> responseList = new ArrayList<>();
         addresses.forEach(address -> {
             var response = new AddressResponse(
-                    address.getIdAdresses(),
+                    address.getIdAddress(),
                     address.getIdPerson(),
                     address.getStreet(),
                     address.getNumber(),
                     address.getNeighborhood(),
                     address.getCity(),
-                    address.getState(),
+                    address.getState().getDescription(),
                     address.getZipcode(),
                     address.getIsActive(),
                     address.getCreationDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")),
@@ -41,13 +40,13 @@ public class AddressMapper {
         if (addressOptional.isPresent()) {
             Address address = addressOptional.get();
             return new AddressResponse(
-                    address.getIdAdresses(),
+                    address.getIdAddress(),
                     address.getIdPerson(),
                     address.getStreet(),
                     address.getNumber(),
                     address.getNeighborhood(),
                     address.getCity(),
-                    address.getState(),
+                    address.getState().getDescription(),
                     address.getZipcode(),
                     address.getIsActive(),
                     address.getCreationDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")),

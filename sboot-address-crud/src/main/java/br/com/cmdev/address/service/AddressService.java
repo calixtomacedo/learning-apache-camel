@@ -25,12 +25,17 @@ public class AddressService {
     }
 
     public List<AddressResponse> findAll() {
-        List<Address> addresses = this.repository.findAll();
+        List<Address> addresses = this.repository.findByIsActiveTrue();
+        return AddressMapper.toAddressResponseList(addresses);
+    }
+
+    public List<AddressResponse> findInactive() {
+        List<Address> addresses = this.repository.findByIsActiveFalse();
         return AddressMapper.toAddressResponseList(addresses);
     }
 
     public AddressResponse findById(Long id) {
-        Optional<Address> addressOptional = this.repository.findById(id);
+        Optional<Address> addressOptional = this.repository.findByIdAddressAndIsActiveTrue(id);
         AddressResponse addressResponse = AddressMapper.toPersonResponse(addressOptional);
         return addressResponse;
     }
@@ -56,4 +61,5 @@ public class AddressService {
             this.repository.delete(address.get());
         }
     }
+
 }
