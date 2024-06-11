@@ -1,5 +1,5 @@
 package br.com.cmdev.apachecamel.routers;
-
+/*
 import br.com.cmdev.apachecamel.processors.IntegrationFileProcessor;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
@@ -27,4 +27,4 @@ public class IntegrationFileRouter extends RouteBuilder {
     }
 
 }
-
+*/

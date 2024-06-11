@@ -1,0 +1,47 @@
+server:
+  port: 8080
+  servlet:
+    session:
+      cookie:
+        http-only: true
+        secure: true
+  error:
+    whitelabel:
+      enabled: false
+
+management:
+  server:
+    port: 9090
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: info, health, metrics, prometheus
+
+spring:
+  application:
+    name: sboot-orch-apache-camel
+  main:
+    banner-mode: "console"
+    allow-bean-definition-overriding: true
+    allow-circular-references: true
+  beaninfo:
+    ignore: true
+
+camel:
+  springboot:
+    tracing: true
+    name: sboot-orch-apache-camel
+  servlet:
+    mapping:
+      contextPath: /*
+  rest:
+    contextPath: /*
+
+# Rotas ->
+router:
+  config:
+    personUrl: http://192.168.15.100:8080/person/{idPerson}
+    addressUrl: http://192.168.15.100:8081/cmdev/address/{idAddress}

@@ -1,5 +1,5 @@
 package br.com.cmdev.apachecamel.routers;
-
+/*
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
 
@@ -17,3 +17,5 @@ public class TimerRouter extends RouteBuilder {
 
 
 }
+
+ */

@@ -1,5 +1,5 @@
 package br.com.cmdev.apachecamel.routers;
-
+/*
 import org.apache.camel.Exchange;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.http.common.HttpMethods;
@@ -24,3 +24,5 @@ public class IntegrationDirectRouter extends RouteBuilder {
     }
 
 }
+
+ */
