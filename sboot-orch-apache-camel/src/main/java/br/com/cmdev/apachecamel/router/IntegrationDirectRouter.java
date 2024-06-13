@@ -1,4 +1,4 @@
-package br.com.cmdev.apachecamel.routers;
+package br.com.cmdev.apachecamel.router;
 /*
 import org.apache.camel.Exchange;
 import org.apache.camel.builder.RouteBuilder;

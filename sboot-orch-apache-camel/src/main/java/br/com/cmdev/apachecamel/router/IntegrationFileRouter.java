@@ -1,4 +1,4 @@
-package br.com.cmdev.apachecamel.routers;
+package br.com.cmdev.apachecamel.router;
 /*
 import br.com.cmdev.apachecamel.processors.IntegrationFileProcessor;
 import org.apache.camel.LoggingLevel;

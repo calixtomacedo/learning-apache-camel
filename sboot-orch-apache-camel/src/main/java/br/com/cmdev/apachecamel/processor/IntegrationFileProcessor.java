@@ -1,4 +1,4 @@
-package br.com.cmdev.apachecamel.processors;
+package br.com.cmdev.apachecamel.processor;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;

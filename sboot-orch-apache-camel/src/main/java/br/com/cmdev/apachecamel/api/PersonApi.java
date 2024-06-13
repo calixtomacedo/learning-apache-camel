@@ -14,22 +14,20 @@ public class PersonApi extends RouteBuilder {
     @Override
     public void configure() throws Exception {
 
-        CamelContext context = new DefaultCamelContext();
-
         rest()
-                .get("v1/cmdev/person/{id}")
-                .tag("Test")
-                .description("Test Camel")
+                .get("/v1/cmdev/person/{id}")
+                .tag("getPerson")
+                .description("Camel to get an person by id")
                 .id("getPersonApi")
                 .produces("application/json")
-                .outType(PersonResponse[].class)
+                .outType(PersonResponse.class)
                 .param()
                     .name("id")
                     .type(RestParamType.path)
                     .required(true)
-                    .description("Código da Pessoa")
+                    .description("Person code")
                 .endParam()
                 .to("direct:getPerson")
         ;
-            }
+    }
 }
