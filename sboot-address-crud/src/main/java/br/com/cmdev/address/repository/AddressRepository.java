@@ -14,4 +14,5 @@ public interface AddressRepository extends ListCrudRepository<Address, Long> {
 
     Optional<Address> findByIdAddressAndIsActiveTrue(Long id);
 
+    List<Address> findByIdPersonAndIsActiveTrue(Long idPerson);
 }

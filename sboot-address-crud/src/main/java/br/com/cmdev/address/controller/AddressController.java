@@ -35,19 +35,28 @@ public class AddressController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
-    @GetMapping("/inactive")
-    public ResponseEntity findInactive() {
-        List<AddressResponse> response = this.service.findInactive();
+    @GetMapping("/{id}")
+    public ResponseEntity findById(@PathVariable("id") Long id) {
+        AddressResponse response = this.service.findById(id);
+        if (response != null) {
+            return ResponseEntity.ok(response);
+        }
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    @GetMapping("/person/{id}")
+    public ResponseEntity findByPersonId(@PathVariable("id") Long personId) {
+        List<AddressResponse> response = this.service.findByIdPerson(personId);
         if (response != null && !response.isEmpty()) {
             return ResponseEntity.ok(response);
         }
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity findById(@PathVariable("id") Long id) {
-        AddressResponse response = this.service.findById(id);
-        if (response != null) {
+    @GetMapping("/inactive")
+    public ResponseEntity findInactive() {
+        List<AddressResponse> response = this.service.findInactive();
+        if (response != null && !response.isEmpty()) {
             return ResponseEntity.ok(response);
         }
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();

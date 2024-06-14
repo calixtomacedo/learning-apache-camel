@@ -2,7 +2,6 @@ package br.com.cmdev.apachecamel.router;
 
 import br.com.cmdev.apachecamel.api.PersonApi;
 import br.com.cmdev.apachecamel.config.RouterPropertiesConfig;
-import br.com.cmdev.apachecamel.dto.PersonResponse;
 import br.com.cmdev.apachecamel.utils.RouterConstants;
 import lombok.RequiredArgsConstructor;
 import org.apache.camel.Exchange;

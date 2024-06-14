@@ -29,15 +29,20 @@ public class AddressService {
         return AddressMapper.toAddressResponseList(addresses);
     }
 
-    public List<AddressResponse> findInactive() {
-        List<Address> addresses = this.repository.findByIsActiveFalse();
-        return AddressMapper.toAddressResponseList(addresses);
-    }
-
     public AddressResponse findById(Long id) {
         Optional<Address> addressOptional = this.repository.findByIdAddressAndIsActiveTrue(id);
         AddressResponse addressResponse = AddressMapper.toPersonResponse(addressOptional);
         return addressResponse;
+    }
+
+    public List<AddressResponse> findByIdPerson(Long personId) {
+        List<Address> addresses = this.repository.findByIdPersonAndIsActiveTrue(personId);
+        return AddressMapper.toAddressResponseList(addresses);
+    }
+
+    public List<AddressResponse> findInactive() {
+        List<Address> addresses = this.repository.findByIsActiveFalse();
+        return AddressMapper.toAddressResponseList(addresses);
     }
 
     public void update(AddressRequest request) {
