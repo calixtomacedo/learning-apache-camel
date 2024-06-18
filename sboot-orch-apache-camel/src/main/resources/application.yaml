@@ -44,4 +44,4 @@ camel:
 router:
   config:
     personUrl: http://192.168.15.100:8080/person/{idPerson}
-    addressUrl: http://192.168.15.100:8081/cmdev/address/{idAddress}
+    addressUrl: http://192.168.15.100:8081/cmdev/address/person/{idPerson}

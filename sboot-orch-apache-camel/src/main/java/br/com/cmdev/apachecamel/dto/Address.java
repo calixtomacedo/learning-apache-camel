@@ -5,22 +5,21 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class PersonResponse {
+@NoArgsConstructor
+public class Address {
+
+    private Long idAddress;
     private Long idPerson;
-    private String name;
-    private String email;
-    private String birthDate;
-    private Integer age;
+    private String street;
+    private String number;
+    private String neighborhood;
+    private String city;
+    private String state;
+    private String zipcode;
     private String isActive;
     private String creationDate;
     private String changeDate;
-    private String meuAtributo;
-
-    private List<Address> addresses;
 }
