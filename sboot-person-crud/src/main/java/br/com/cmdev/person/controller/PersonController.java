@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/person")
 public class PersonController {
 
-    private PersonService service;
+    private final PersonService service;
 
     public PersonController(PersonService service) {
         this.service = service;
