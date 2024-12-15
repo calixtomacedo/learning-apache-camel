@@ -6,10 +6,10 @@ import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.validation.annotation.Validated;
 
-@ConfigurationProperties("router.config")
-@Validated
 @Getter
 @Setter
+@Validated
+@ConfigurationProperties("router.config")
 public class RouterPropertiesConfig {
 
     @NotBlank
@@ -18,3 +18,5 @@ public class RouterPropertiesConfig {
     @NotBlank
     private String addressUrl;
 }
+
+

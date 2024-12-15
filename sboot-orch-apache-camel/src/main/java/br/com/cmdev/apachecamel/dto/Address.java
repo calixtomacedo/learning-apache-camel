@@ -22,4 +22,5 @@ public class Address {
     private String isActive;
     private String creationDate;
     private String changeDate;
+
 }

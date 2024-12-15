@@ -50,7 +50,7 @@ public class AddressController {
         if (response != null && !response.isEmpty()) {
             return ResponseEntity.ok(response);
         }
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        return ResponseEntity.ok(List.of());
     }
 
     @GetMapping("/inactive")

@@ -11,7 +11,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class PersonResponse {
+public class Person {
     private Long idPerson;
     private String name;
     private String email;
@@ -20,7 +20,6 @@ public class PersonResponse {
     private String isActive;
     private String creationDate;
     private String changeDate;
-    private String meuAtributo;
 
-    private List<Address> addresses;
+    private List<Address> address;
 }
