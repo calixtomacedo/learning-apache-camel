@@ -47,10 +47,11 @@ public class PersonRouter extends PersonApi {
         ;
 
         from(RouterConstants.ROUTE_ADDRESS)
-                .routeId("getAddressPerson")
+                .routeId("getAddressPersonApiId")
                 .setHeader(Exchange.HTTP_METHOD, constant(HttpMethod.GET))
                 .toD(properties.getAddressUrl().replace(RouterConstants.REQUEST_PARAM_PERSON_ID, RouterConstants.HEADER_PARAM_ID))
                 .unmarshal(new ListJacksonDataFormat(Address.class))
+                //.unmarshal().json(Jackson, List.class)
                 .process(new AddressProcessor())
                 .end()
         ;
