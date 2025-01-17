@@ -16,6 +16,8 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 
+import static org.apache.camel.model.dataformat.JsonLibrary.Jackson;
+
 
 @Component
 @RequiredArgsConstructor
@@ -39,7 +41,7 @@ public class PersonRouter extends PersonApi {
                 .removeHeader(Exchange.HTTP_URI)
                 .to(RouterConstants.ROUTE_ADDRESS)
                 .toD(properties.getPersonUrl().replace(RouterConstants.REQUEST_PARAM_PERSON_ID, RouterConstants.HEADER_PARAM_ID))
-                .unmarshal(new JacksonDataFormat(Person.class))
+                .unmarshal().json(Jackson, Person.class)
                 .process(new PersonProcessor())
                 .end()
         ;
