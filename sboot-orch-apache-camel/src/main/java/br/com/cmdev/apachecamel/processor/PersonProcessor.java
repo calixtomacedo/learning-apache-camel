@@ -20,6 +20,6 @@ public class PersonProcessor implements Processor {
 
         ObjectWriter objectWriter = new ObjectMapper().writer().withDefaultPrettyPrinter();
         String jsonRequestGetPesron = objectWriter.writeValueAsString(personResponse);
-        log.info("CONSULTA PESSOA | Consultando os dados da pessoa com o request: {}", jsonRequestGetPesron);
+        log.info("CONSULTA PESSOA | Resultado da consulta pessoa: {}", jsonRequestGetPesron);
     }
 }

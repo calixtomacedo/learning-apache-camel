@@ -2,16 +2,13 @@ package br.com.cmdev.apachecamel.router;
 
 import br.com.cmdev.apachecamel.api.PersonApi;
 import br.com.cmdev.apachecamel.config.RouterPropertiesConfig;
-import br.com.cmdev.apachecamel.dto.Address;
 import br.com.cmdev.apachecamel.dto.Person;
-import br.com.cmdev.apachecamel.processor.AddressProcessor;
 import br.com.cmdev.apachecamel.processor.ExceptionProcessor;
 import br.com.cmdev.apachecamel.processor.PersonProcessor;
 import br.com.cmdev.apachecamel.utils.RouterConstants;
 import lombok.RequiredArgsConstructor;
 import org.apache.camel.Exchange;
-import org.apache.camel.component.jackson.JacksonDataFormat;
-import org.apache.camel.component.jackson.ListJacksonDataFormat;
+import org.apache.camel.LoggingLevel;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
@@ -40,19 +37,10 @@ public class PersonRouter extends PersonApi {
                 .setHeader(Exchange.HTTP_METHOD, constant(HttpMethod.GET))
                 .removeHeader(Exchange.HTTP_URI)
                 .to(RouterConstants.ROUTE_ADDRESS)
+                .log(LoggingLevel.INFO, "CONSULTA PESSOA | Integração com o serviço: "+ properties.getPersonUrl().replace(RouterConstants.REQUEST_PARAM_PERSON_ID, RouterConstants.HEADER_PARAM_ID))
                 .toD(properties.getPersonUrl().replace(RouterConstants.REQUEST_PARAM_PERSON_ID, RouterConstants.HEADER_PARAM_ID))
                 .unmarshal().json(Jackson, Person.class)
                 .process(new PersonProcessor())
-                .end()
-        ;
-
-        from(RouterConstants.ROUTE_ADDRESS)
-                .routeId("getAddressPersonApiId")
-                .setHeader(Exchange.HTTP_METHOD, constant(HttpMethod.GET))
-                .toD(properties.getAddressUrl().replace(RouterConstants.REQUEST_PARAM_PERSON_ID, RouterConstants.HEADER_PARAM_ID))
-                .unmarshal(new ListJacksonDataFormat(Address.class))
-                //.unmarshal().json(Jackson, List.class)
-                .process(new AddressProcessor())
                 .end()
         ;
 
