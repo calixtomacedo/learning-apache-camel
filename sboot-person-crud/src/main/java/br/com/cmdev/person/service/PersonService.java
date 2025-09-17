@@ -20,8 +20,10 @@ public class PersonService {
         this.repository = repository;
     }
 
-    public void save(PersonRequest request) {
-        this.repository.save(PersonMapper.toPerson(request));
+    public Person save(PersonRequest request) {
+        Person person = PersonMapper.toPerson(request);
+        this.repository.save(person);
+        return person;
     }
 
 

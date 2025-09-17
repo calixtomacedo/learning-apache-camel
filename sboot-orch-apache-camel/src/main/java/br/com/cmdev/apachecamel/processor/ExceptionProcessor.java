@@ -6,10 +6,13 @@ import org.apache.camel.Processor;
 import org.apache.camel.http.base.HttpOperationFailedException;
 import org.springframework.http.HttpStatus;
 
+import java.util.Objects;
+
 public class ExceptionProcessor implements Processor {
     @Override
     public void process(Exchange exchange) throws Exception {
         var exception = exchange.getProperty(Exchange.EXCEPTION_CAUGHT, Throwable.class);
+        var operationFailedException = exchange.getProperty(Exchange.EXCEPTION_CAUGHT, HttpOperationFailedException.class);
         int statusCode;
         if(exception instanceof HttpOperationFailedException){
             statusCode = ((HttpOperationFailedException) exception).getStatusCode();

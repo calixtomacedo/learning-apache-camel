@@ -11,6 +11,7 @@ import org.apache.camel.Exchange;
 import org.apache.camel.LoggingLevel;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 import static org.apache.camel.model.dataformat.JsonLibrary.Jackson;
@@ -39,8 +40,11 @@ public class PersonRouter extends PersonApi {
                 .to(RouterConstants.ROUTE_ADDRESS)
                 .log(LoggingLevel.INFO, "CONSULTA PESSOA | Integração com o serviço: "+ properties.getPersonUrl().replace(RouterConstants.REQUEST_PARAM_PERSON_ID, RouterConstants.HEADER_PARAM_ID))
                 .toD(properties.getPersonUrl().replace(RouterConstants.REQUEST_PARAM_PERSON_ID, RouterConstants.HEADER_PARAM_ID))
-                .unmarshal().json(Jackson, Person.class)
-                .process(new PersonProcessor())
+                .choice()
+                    .when(header(Exchange.HTTP_RESPONSE_CODE).isEqualTo(HttpStatus.OK.value()))
+                        .unmarshal().json(Jackson, Person.class)
+                        .process(new PersonProcessor())
+                    .endChoice()
                 .end()
         ;
 

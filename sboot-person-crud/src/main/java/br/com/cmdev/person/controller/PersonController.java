@@ -6,6 +6,9 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
+
+import java.net.URI;
 
 @RestController
 @RequestMapping("/person")
@@ -18,9 +21,10 @@ public class PersonController {
     }
 
     @PostMapping
-    public ResponseEntity save(@Valid @RequestBody PersonRequest request) {
-        this.service.save(request);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+    public ResponseEntity save(@Valid @RequestBody PersonRequest request, UriComponentsBuilder uriComponentsBuilder) {
+        var person = this.service.save(request);
+        URI uri = uriComponentsBuilder.path("/person/{id}").buildAndExpand(person.getIdPerson()).toUri();
+        return ResponseEntity.created(uri).body(person);
     }
 
     @GetMapping
