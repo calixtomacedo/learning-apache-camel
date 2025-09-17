@@ -10,9 +10,7 @@ import org.mapstruct.ReportingPolicy;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING, unmappedTargetPolicy = ReportingPolicy.ERROR)
 public interface UserMapper {
 
-    //UserMapper INSTANCE = Mappers.getMapper(UserMapper.class);
-
-    //@Mapping(target = "userId", ignore = true)
+    @Mapping(target = "userId", ignore = true)
     User toEntity(UserRequest request);
 
 }

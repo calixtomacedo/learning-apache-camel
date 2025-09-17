@@ -22,9 +22,8 @@ public class UserController {
     @PostMapping
     public ResponseEntity save(@Valid @RequestBody UserRequest request, UriComponentsBuilder uriBuilder) {
         var userCreated = this.service.save(request);
-        //var uri = uriBuilder.path("/user/{id}").buildAndExpand(userCreated.getUserId()).toUri();
-        //return ResponseEntity.created(uri).body(userCreated);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        var uri = uriBuilder.path("/user/{id}").buildAndExpand(userCreated.getUserId()).toUri();
+        return ResponseEntity.created(uri).body(userCreated);
     }
 
     @GetMapping
