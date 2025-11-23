@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: demo-sboot-product
+
+server:
+  port: 8081

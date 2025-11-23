@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: demo-apache-camel-spring-boot
+
+  cloud:
+    gcp:
+      project-id: cmdev-cloud-project
+      credentials:
+        location: file:src/main/resources/cmdev-service-account-pub-sub.json
+      topic-name: cmdev-orders-topic-sub
+
+camel:
+  springboot:
+    tracing: true
+    name: sboot-orch-apache-camel
+  servlet:
+    mapping:
+      contextPath: /*
+  rest:
+    contextPath: /*
+
+# Routes
+router:
+  config:
+    product-url: http://localhost:8081
+
+
+# Apache Camel 4.7.0 Versão atual do BV
+# Apache Camel 4.14.1 Versão nova do BV

@@ -1,0 +1,14 @@
+package br.com.cmdev.demo.apache.camel.spring.router;
+
+import jakarta.validation.constraints.NotBlank;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.validation.annotation.Validated;
+
+@Validated
+@ConfigurationProperties("router.config")
+public record RouterProperties(
+
+        @NotBlank String productUrl
+
+) {
+}
