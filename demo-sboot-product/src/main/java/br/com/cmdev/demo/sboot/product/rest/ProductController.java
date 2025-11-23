@@ -2,8 +2,6 @@ package br.com.cmdev.demo.sboot.product.rest;
 
 import br.com.cmdev.demo.sboot.product.domain.Product;
 import br.com.cmdev.demo.sboot.product.service.ProductService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
